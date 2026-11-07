@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nur Anis Nazira – Software Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d1018;--fog:#171c28;--line:#2c3446;--silver:#d3d9e2;--mute:#8d97aa;--gold:#c2a368;--wine:#8a2d40;
+  color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--ink:#f3efe6;--fog:#e8e2d4;--line:#c9bfa8;--silver:#1c2030;--mute:#58607a;--gold:#7d5f22;--wine:#8a2d40;color-scheme:light}}
+:root[data-theme="dark"]{--ink:#0d1018;--fog:#171c28;--line:#2c3446;--silver:#d3d9e2;--mute:#8d97aa;--gold:#c2a368;--wine:#8a2d40;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--silver);font:400 1rem/1.65 "Work Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;margin:0;line-height:1.1}
+a{color:var(--gold)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.5rem}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;font-size:.9rem}
+nav .mark{font-family:"Cormorant Garamond",serif;font-size:1.25rem;color:var(--silver);text-decoration:none}
+nav ul{display:flex;gap:1.5rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav ul a{color:var(--mute);text-decoration:none}nav ul a:hover{color:var(--gold)}
+
+/* Hero: a lantern follows the cursor and reveals the hidden trace */
+.hero{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--line);
+  --x:70%;--y:40%;background:radial-gradient(520px circle at var(--x) var(--y),rgba(194,163,104,.16),transparent 70%),var(--ink)}
+.hero .wrap{padding-top:4rem;padding-bottom:4rem}
+.hero p.pre{color:var(--gold);font-style:italic;font-family:"Cormorant Garamond",serif;font-size:1.3rem;margin:0 0 1rem}
+.hero h1{font-size:clamp(2.6rem,8vw,5.6rem);max-width:13ch;letter-spacing:-.01em}
+.hero .sub{max-width:52ch;color:var(--mute);margin:1.5rem 0 2rem;font-family:"Cormorant Garamond",serif;font-size:1.3rem;line-height:1.4}
+.trace{position:absolute;right:6%;bottom:12%;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(1rem,2.4vw,1.6rem);color:var(--gold);
+  -webkit-mask:radial-gradient(180px circle at var(--x) var(--y),#000,transparent 80%);mask:radial-gradient(180px circle at var(--x) var(--y),#000,transparent 80%);opacity:.9;text-align:right}
+.btn{display:inline-block;padding:.8rem 1.6rem;border:1px solid var(--gold);color:var(--gold);text-decoration:none;background:transparent;font:500 .95rem "Work Sans",sans-serif;cursor:pointer;
+  clip-path:polygon(10px 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,10px 100%,0 50%);transition:background .2s,color .2s}
+.btn:hover{background:var(--gold);color:var(--ink)}
+.btn.solid{background:var(--gold);color:var(--ink)}.btn.solid:hover{background:transparent;color:var(--gold)}
+.row{display:flex;gap:1rem;flex-wrap:wrap}
+
+section{padding:5rem 0;border-bottom:1px solid var(--line)}
+.head{display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem}
+.head h2{font-size:clamp(2rem,5vw,3rem)}
+.head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.diamond{width:10px;height:10px;background:var(--gold);transform:rotate(45deg);flex:none}
+
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem}
+.about p{font-size:1.1rem;margin:0}
+.facts{margin:0;padding:0;list-style:none;border-left:1px solid var(--gold);padding-left:1.5rem;display:grid;gap:1rem}
+.facts b{display:block;font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:500}
+.facts span{color:var(--mute);font-size:.9rem}
+
+/* Case files */
+.case{border:1px solid var(--line);background:var(--fog);margin-bottom:1.25rem;position:relative}
+.case::before{content:"";position:absolute;inset:6px;border:1px solid var(--line);pointer-events:none;opacity:.6}
+.case summary{list-style:none;cursor:pointer;padding:1.75rem 2rem;display:grid;grid-template-columns:1fr auto;gap:.5rem 1.5rem;align-items:center}
+.case summary::-webkit-details-marker{display:none}
+.case h3{font-size:clamp(1.6rem,3.5vw,2.2rem)}
+.case .tag{color:var(--gold);font-size:.85rem}
+.case .sum{grid-column:1/-1;color:var(--mute);max-width:64ch}
+.case .plus{width:34px;height:34px;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);transform:rotate(45deg);transition:transform .3s,background .3s}
+.case .plus i{transform:rotate(-45deg);font-style:normal;font-size:1.2rem;line-height:1;transition:transform .3s}
+.case[open] .plus{background:var(--gold);color:var(--ink);transform:rotate(225deg)}
+.case[open] .plus i{transform:rotate(-225deg)}
+.case .body{padding:0 2rem 2rem;border-top:1px solid var(--line);margin:0 2rem;padding:1.5rem 0 .5rem;position:relative}
+.case ul{margin:0 0 1rem;padding-left:1.2rem;color:var(--silver)}
+.case li{margin-bottom:.5rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+.chip{border:1px solid var(--line);padding:.2rem .8rem;font-size:.85rem;color:var(--mute);border-radius:99px}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem 3rem}
+.skills h3{font-size:1.5rem;color:var(--gold);margin-bottom:.5rem}
+.skills p{margin:0;color:var(--mute)}
+
+.tl{border-left:1px solid var(--gold);margin-left:5px}
+.tl .item{position:relative;padding:0 0 2.25rem 2rem}
+.tl .item::before{content:"";position:absolute;left:-6px;top:.45rem;width:11px;height:11px;background:var(--ink);border:1px solid var(--gold);transform:rotate(45deg)}
+.tl h3{font-size:1.6rem}.tl .when{color:var(--gold);font-size:.9rem}.tl p{margin:.4rem 0 0;color:var(--mute);max-width:62ch}
+
+.contact{text-align:center}
+.contact h2{font-size:clamp(2.2rem,6vw,4rem);max-width:16ch;margin:0 auto 1rem}
+.contact p{color:var(--mute);max-width:46ch;margin:0 auto 2rem}
+.contact .row{justify-content:center}
+.refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:3rem;text-align:left}
+.refs div{border:1px solid var(--line);padding:1rem 1.25rem;font-size:.9rem;color:var(--mute)}
+.refs b{display:block;color:var(--silver);font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:500}
+footer{padding:2rem 0;text-align:center;color:var(--mute);font-size:.85rem}
+@media(max-width:720px){.about{grid-template-columns:1fr}.case summary{padding:1.25rem}.case .body{margin:0 1.25rem}.trace{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <nav aria-label="Main">
+    <a class="mark" href="#top">Nur Anis Nazira</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#cases">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#path">Journey</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero" id="hero">
+    <div class="wrap">
+      <p class="pre">Software Engineering Student, German-Malaysian Institute</p>
+      <h1>Where ideas take shape, and every detail leaves a trace.</h1>
+      <p class="sub">I build Android apps, IoT systems and mobile designs, and I care about the small details that make them clear to use.</p>
+      <div class="row">
+        <a class="btn solid" href="#cases">Open the case files</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="trace" aria-hidden="true">Every project begins with a question.</div>
+  </div>
+
+  <section id="about"><div class="wrap">
+    <div class="head"><span class="diamond"></span><h2>About</h2></div>
+    <div class="about">
+      <p>I’m a Diploma in Software Engineering student in Rawang, Selangor. I’m looking for an opportunity to apply my programming, problem-solving and technical skills in a professional setting, gain practical experience and grow as a developer. I bring teamwork, communication, adaptability and leadership to every project I join.</p>
+      <ul class="facts">
+        <li><b>3.05 CGPA</b><span>Diploma in Software Engineering, 2024 – 2027</span></li>
+        <li><b>3 projects</b><span>IoT and AI, mobile design, Android</span></li>
+        <li><b>3 languages</b><span>Malay, English, German</span></li>
+      </ul>
+    </div>
+  </div></section>
+
+  <section id="cases"><div class="wrap">
+    <div class="head"><span class="diamond"></span><h2>Case files</h2></div>
+
+    <details class="case" open>
+      <summary>
+        <div><h3>AgroSense</h3><span class="tag">AI smart agriculture system · Final Year Project · team of 3</span></div>
+        <span class="plus" aria-hidden="true"><i>+</i></span>
+        <p class="sum">An IoT irrigation system that stops overwatering, underwatering and water waste caused by manual checks and timer-based watering.</p>
+      </summary>
+      <div class="body">
+        <div class="chips"><span class="chip">ESP32-S3</span><span class="chip">IoT</span><span class="chip">Web dashboard</span><span class="chip">AI logic</span></div>
+        <ul>
+          <li>Designed the hardware around an ESP32-S3 with soil moisture, DHT22 temperature and humidity, and water level sensors.</li>
+          <li>Planned Wi-Fi transmission of sensor data to a web dashboard so farmers and home gardeners can monitor remotely.</li>
+          <li>Designed automatic pump control through a relay module, with adjustable moisture thresholds and watering intervals.</li>
+          <li>Included AI decision logic that recommends or triggers irrigation, and falls back to threshold logic when confidence is low.</li>
+          <li>Specified user and admin login, real-time monitoring, device management, alerts, and daily, weekly and monthly reports.</li>
+          <li>Defined a testing plan for sensor accuracy, irrigation triggering, data transmission reliability and dashboard usability.</li>
+        </ul>
+        <p style="color:var(--mute);font-size:.9rem">Supervisor: Muhammad Aidilsyukri bin Raduan · Project code SWE/111/24B</p>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>
+        <div><h3>EZDental</h3><span class="tag">Dental appointment booking app · Figma</span></div>
+        <span class="plus" aria-hidden="true"><i>+</i></span>
+        <p class="sum">A high-fidelity mobile prototype with more than 15 screens and states, covering the full booking journey.</p>
+      </summary>
+      <div class="body">
+        <div class="chips"><span class="chip">Figma</span><span class="chip">UI/UX</span><span class="chip">Prototyping</span><span class="chip">Design system</span></div>
+        <ul>
+          <li>Designed login with show/hide password, MyDigital ID sign-in, and account recovery links.</li>
+          <li>Built a home screen with quick actions, common symptoms and FAQ, and popular dentist locations with ratings.</li>
+          <li>Mapped the booking flow: pick a service, choose a dentist, select a date in a calendar that marks availability, then choose a time.</li>
+          <li>Added a personal details form, a summary screen and a confirmation message.</li>
+          <li>Created scheduled appointments and history screens with sorting and clear empty states.</li>
+          <li>Added settings, a biometric login toggle, forgot password and notifications.</li>
+          <li>Built reusable components and variants (dropdowns, dentist list, time picker, buttons, bottom navigation) for consistency.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>
+        <div><h3>MiMath</h3><span class="tag">Android mathematics quiz app · pair project</span></div>
+        <span class="plus" aria-hidden="true"><i>+</i></span>
+        <p class="sum">A 10-question true/false maths quiz that gives students instant feedback and a live score.</p>
+      </summary>
+      <div class="body">
+        <div class="chips"><span class="chip">Java</span><span class="chip">XML</span><span class="chip">Android Studio</span></div>
+        <ul>
+          <li>Built TRUE and FALSE answer buttons, a question counter and a live score that adds 100 points per correct answer.</li>
+          <li>Showed a correct or wrong image with a popup message after every answer.</li>
+          <li>Locked answered questions and kept Next disabled until a question was answered, so each one scores only once.</li>
+          <li>Added Back and Next navigation, with Back disabled on the first question.</li>
+          <li>Built a results screen with the final score, correct answers and a Replay button.</li>
+          <li>Wrote a full report with pseudocode, flowchart, screenshots, source code and conclusion.</li>
+        </ul>
+      </div>
+    </details>
+  </div></section>
+
+  <section id="skills"><div class="wrap">
+    <div class="head"><span class="diamond"></span><h2>Skills</h2></div>
+    <div class="skills">
+      <div><h3>Programming</h3><p>Java and XML, pseudocode and flowcharts to plan program logic.</p></div>
+      <div><h3>Android</h3><p>Activities, XML layouts, buttons, TextView and ImageView, user input and events, score logic, screen navigation, popup messages.</p></div>
+      <div><h3>UI/UX design</h3><p>High-fidelity Figma prototypes, complete user flows, reusable components and variants, consistent layouts.</p></div>
+      <div><h3>IoT and embedded</h3><p>ESP32-S3, soil moisture, DHT22 and water level sensors, relay and pump control, data over Wi-Fi.</p></div>
+      <div><h3>Web and data</h3><p>Real-time dashboards, user and admin login, alerts, periodic reports, AI-assisted logic with threshold fallback.</p></div>
+      <div><h3>Tools and documentation</h3><p>Word, Excel, PowerPoint, Access and Figma. Technical reports with algorithms, screenshots, source code and references.</p></div>
+      <div><h3>Working with people</h3><p>Problem solving, teamwork, communication, customer service, time management, adaptability, leadership.</p></div>
+    </div>
+  </div></section>
+
+  <section id="path"><div class="wrap">
+    <div class="head"><span class="diamond"></span><h2>Journey</h2></div>
+    <div class="tl">
+      <div class="item"><h3>Participant, AI and Cloud Skills Day</h3><span class="when">18 August 2026 · AWS Student Builder Group, Asia Pacific University</span><p>Attended the event and received a certificate of participation.</p></div>
+      <div class="item"><h3>Gym Staff</h3><span class="when">2025 – 2026 · GMI Student Apprentice Program</span><p>Supported daily gym operations and members, kept facilities clean and safe, reported maintenance issues and helped with administrative tasks.</p></div>
+      <div class="item"><h3>Vice President</h3><span class="when">2025 · GMI Bowling Club</span><p>Helped plan events and tournaments, led and motivated members, and coordinated the committee and management.</p></div>
+      <div class="item"><h3>Diploma in Software Engineering</h3><span class="when">2024 – 2027 · German-Malaysian Institute</span><p>Hands-on coursework in Android programming (SPG 0562) with Java and XML, plus the AgroSense final year project.</p></div>
+      <div class="item"><h3>Secondary Education</h3><span class="when">2019 – 2024 · Sekolah Menengah Bukit Sentosa</span></div>
+    </div>
+  </div></section>
+
+  <section id="contact" class="contact"><div class="wrap">
+    <h2>Have a project or an opening in mind?</h2>
+    <p>I’m open to internships and junior roles where I can build, learn and contribute to a team.</p>
+    <div class="row">
+      <a class="btn solid" href="mailto:nuranisnazirabintimohdsaad@gmail.com">Send an email</a>
+      <a class="btn" href="https://github.com/Naz1ra" rel="noopener">View GitHub</a>
+      <a class="btn" href="tel:+60173329785">Call +60 17-332 9785</a>
+    </div>
+    <div class="refs">
+      <div><b>Muhammad Aidilsyukri bin Raduan</b>Senior Technical Training Officer<br>+60 19-307 6684</div>
+      <div><b>Siti Rohaya binti Mohd Isa</b>Senior Technical Training Officer<br>+60 17-368 4902</div>
+    </div>
+  </div></section>
+</main>
+<footer>© 2026 Nur Anis Nazira binti Mohd Saad · Rawang, Selangor, Malaysia</footer>
+
+<script>
+(function(){
+  var h=document.getElementById('hero');
+  if(!h||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  function move(e){
+    var r=h.getBoundingClientRect(),p=e.touches?e.touches[0]:e;
+    h.style.setProperty('--x',(p.clientX-r.left)+'px');
+    h.style.setProperty('--y',(p.clientY-r.top)+'px');
+  }
+  h.addEventListener('pointermove',move);
+  h.addEventListener('touchmove',move,{passive:true});
+})();
+</script>
+</body>
+</html>
